@@ -3,6 +3,8 @@
 
 namespace predicates
 {
+    //------------------ 02 ORIENTATION --------------------
+
     // Signed area *2 of triangle (A, B, C): positive CCW, negative = CW, 0 = Collinear
     double oriented2d(const geometry::Point& a,
                       const geometry::Point& b,
@@ -14,4 +16,36 @@ namespace predicates
                      const geometry::Point& p,
                      double eps = 1e-12);
 
+    // ----------------03 INTERSECT --------------------
+
+    // Check if a point P is in line A -> B
+    int side_of_line(const geometry::Point& a,
+                    const geometry::Point& b,
+                    const geometry::Point& p,
+                    double eps = 1e-12);
+
+    // Create a class for types of Intersections
+    enum class SegmentIntersectionType{
+        None,
+        Proper,
+        Touching,
+        CollinearOverlap
+    };
+
+    // Declare : Function that gives out which type of Intersection we have
+    SegmentIntersectionType segment_intersection_type(
+        const geometry::Point& a, geometry::Point& b,
+        const geometry::Point& c, geometry::Point& d,
+        double eps = 1e-12
+    );
+
+    // Declare: Function to Check if two lines intersect
+    bool segment_intersect(
+        const geometry::Point& a, const geometry::Point& b,
+        const geometry::Point& c, const geometry::Point& d,
+        double eps = 1e-12
+    );
+
+
+    
 }
