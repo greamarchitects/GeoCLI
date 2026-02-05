@@ -10,6 +10,18 @@ using namespace std;
 #include "geometry.hpp"
 #include "predicates.hpp"
 
+namespace 
+{
+    geometry::Point read_point(const std::string& name){
+        geometry::Point p;
+        std::cout << name << endl;
+        p.x = cli::read_double(" x: ");
+        p.y = cli::read_double(" y: ");
+        return p;
+    }
+    
+} 
+
 namespace algorithms
 {
     //
@@ -48,7 +60,49 @@ namespace algorithms
     void run_orientation_tool()
     {
         cout << "\n[Orientation test]\n";
-        // TODO: read A,B,C and call predicates::orientation(...)
+        cout << "- a. Orientation of 3 Points\n";
+        cout << "- b. Point relative to line AB\n";
+
+        char choice = cli::read_choice("Choose (a/b)", "ab");
+
+        if (choice == 'a')
+        {
+            const auto A = read_point("Point A");
+            const auto B = read_point("Point B");
+            const auto C = read_point("Point C");
+
+            const double v = predicates::oriented2d(A, B, C);
+            
+            cout << "\nResult:\n";
+            if (v > 0){
+                cout << " Counterclockwise (CCW)\n";
+            } else if (v > 0){
+                cout << " Clockwise (CW)\n";
+            } else {
+                cout << " Collinear\n";
+            }
+
+            cout << " oriented2d value = " << v << "\n\n";
+        }
+        else
+        {
+            const auto A = read_point("Line Point A");
+            const auto B = read_point("Line Point B");
+            const auto P = read_point("Test Point P");
+
+            const int side = predicates::side_of_line(A,B,P);
+
+            cout << "\nResult:\n";
+            if (side > 0){
+                cout << "P is LEFT to the Line AB\n";
+            }else if(side < 0){
+                cout << "P is RIGHT to the Line AB\n";
+            }else{
+                cout << "P is ON the Line\n";
+            }
+            cout << "\n";
+        }
+
     }
 
     //

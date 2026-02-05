@@ -41,44 +41,44 @@ int main()
     while (running)
     {
         displayMenu();
+        int choice;
 
         cout << " Select an option (1 - 5): ";
         while (true)
         {
-            int choice;
+            // int choice = cli::read_int("Select an option (1 - 5): ", 1, 5);
             if (cin >> choice && choice >= 1 && choice <= 5)
             {
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                // break;
+                break;
             }
             cout << "Invalid input. Please enter a number from 1 to 5.\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
-            switch (choice)
-            {
-            case 1:
-                algorithms::run_distance_tool();
-                break;
-            case 2:
-                algorithms::run_orientation_tool();
-                break;
-            case 3:
-                algorithms::run_segment_intersection_tool();
-                break;
-            case 4:
-                algorithms::run_polygon_area_tool();
-                break;
-            case 5:
-                running = false;
-                cout << "Thanks for using GeoCLI!";
-                break;
+        switch (choice)
+        {
+        case 1:
+            algorithms::run_distance_tool();
+            break;
+        case 2:
+            algorithms::run_orientation_tool();
+            break;
+        case 3:
+            algorithms::run_segment_intersection_tool();
+            break;
+        case 4:
+            algorithms::run_polygon_area_tool();
+            break;
+        case 5:
+            running = false;
+            cout << "Thanks for using GeoCLI!";
+            break;
 
-            default:
-                break;
-            }
+        default:
+            break;
         }
     }
-
     return 0;
 }
