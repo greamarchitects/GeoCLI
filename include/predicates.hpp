@@ -18,12 +18,6 @@ namespace predicates
 
     // ----------------03 INTERSECT --------------------
 
-    // Check if a point P is in line A -> B
-    int side_of_line(const geometry::Point& a,
-                    const geometry::Point& b,
-                    const geometry::Point& p,
-                    double eps = 1e-12);
-
     // Create a class for types of Intersections
     enum class SegmentIntersectionType{
         None,
@@ -34,8 +28,8 @@ namespace predicates
 
     // Declare : Function that gives out which type of Intersection we have
     SegmentIntersectionType segment_intersection_type(
-        const geometry::Point& a, geometry::Point& b,
-        const geometry::Point& c, geometry::Point& d,
+        const geometry::Point& a, const geometry::Point& b,
+        const geometry::Point& c, const geometry::Point& d,
         double eps = 1e-12
     );
 
