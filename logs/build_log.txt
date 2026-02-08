@@ -1,0 +1,61 @@
+ERROR LOG – GeoCLI (Code & Tooling Only)
+
+Project: GeoCLI – Geometry Command Line Interface
+Course: C++ Programming Fundamentals
+Author: Gresa Calliku
+
+--------------------------------------
+Error 1: Header files not found
+Cause: include/ directory not passed to compiler
+Fix: Added -Iinclude
+
+--------------------------------------
+Error 2: Source files not found
+Cause: Wrong working directory
+Fix: Compile from project root
+
+--------------------------------------
+Error 3: make does nothing
+Cause: Incorrect dependencies
+Fix: Object-based Makefile rules
+
+--------------------------------------
+Error 4: No .o or executable
+Cause: Compile/link mixed
+Fix: Separate rules
+
+--------------------------------------
+Error 5: Menu input rejected valid values
+Cause: Mixed cin and helpers
+Fix: cli::read_int
+
+--------------------------------------
+Error 6: read_choice misuse
+Cause: char treated as int
+Fix: Compare against 'a','b'
+
+--------------------------------------
+Error 7: Default argument redefinition
+Fix: Default only in header
+
+--------------------------------------
+Error 8: Const correctness error
+Fix: Use const references
+
+--------------------------------------
+Error 9: geometry_primitives undefined
+Fix: Added header
+
+--------------------------------------
+Error 10: Static functions missing definitions
+Fix: Implemented in .cpp
+
+--------------------------------------
+Error 11: CSV header rejected
+Fix: Skip header, group polygons
+
+--------------------------------------
+Error 12: Directory path used as file
+Fix: filesystem validation
+
+END OF LOG
